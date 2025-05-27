@@ -1,0 +1,59 @@
+version: 1.2.1
+ 
+cache: true
+ 
+interface:
+  # Privacy policy settings
+  privacyPolicy:
+    externalUrl: 'https://librechat.ai/privacy-policy'
+    openNewTab: true
+ 
+  # Terms of service
+  termsOfService:
+    externalUrl: 'https://librechat.ai/tos'
+    openNewTab: true
+ 
+registration:
+  socialLogins: ["discord", "facebook", "github", "google", "openid"]
+  
+# Balance settings
+balance:
+  enabled: true                # Enable token credit balances for users
+  startBalance: 200000          # Initial tokens credited upon registration
+  autoRefillEnabled: false     # Enable automatic token refills
+  refillIntervalValue: 30      # Numerical value for refill interval
+  refillIntervalUnit: "days"   # Time unit for refill interval (days, hours, etc.)
+  refillAmount: 100000          # Tokens added during each refill
+ 
+endpoints:
+  custom:
+ 
+    # Mistral AI API
+    - name: "Mistral"
+      apiKey: "{MISTRAL_API_KEY}"
+      baseURL: "https://api.mistral.ai/v1"
+      models:
+        default: [
+          "mistral-small-latest",
+          "ministral-3b-latest",
+          "ministral-8b-latest",
+          "mistral-large-latest"
+          ]
+        fetch: false
+      titleConvo: true
+      titleModel: "ministral-3b-latest"
+      modelDisplayLabel: "Mistral"
+      dropParams: ["stop", "user", "frequency_penalty", "presence_penalty"]
+
+          - name: "Cerebras"
+      apiKey: "{CEREBRAS_API_KEY}"
+      baseURL: "https://api.cerebras.ai/v1/"
+      models:
+        default: ["llama3.1-8b", "llama-3.3-70b"]
+        fetch: true
+      titleConvo: true
+      titleModel: "llama3.1-8b"
+      modelDisplayLabel: "Cerebras"
+
+	  
+	
